@@ -21,6 +21,7 @@ console.log(process.env.DATABASEURL);
 mongoose.connect(process.env.DATABASEURL);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
+app.locals.moment = require('moment');
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(flash());
@@ -52,7 +53,7 @@ app.use(campgroundRoutes);
 app.use(commentRoutes);
 
 //Server Start
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(/*process.env.PORT, process.env.IP*/3000, function(){
    console.log("YelpCamp server is listening!!!"); 
 });
 
